@@ -1,4 +1,4 @@
-# PSExec64 to elevate to SYSTEM user
+# Use PSExec64 from Sysinternals PsTools to elevate to SYSTEM user
 $ProcessPath = "C:\Users\Andy\Desktop\Software\PSTools\PsExec64.exe"
 
 # Prepend arguments required by PSExec64

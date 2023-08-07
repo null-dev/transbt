@@ -251,7 +251,7 @@ fn check_or_suggest_addr(
 
     // Show similar MACs
     println!("{target_addr_name} ({}) is not paired on this system. \
-    Sometimes devices slightly randomize their MAC addresses when they get re-paired, \
+    Some Bluetooth devices slightly randomize/change their MAC address when they get re-paired, \
     here is a list of devices with similar MAC addresses paired to this system:", format_mac(target_addr));
     for (idx, (possible_addr, name)) in possible_addrs.iter().enumerate() {
         println!("\t[{}] {} => {name}", idx + 1, format_mac(possible_addr))
