@@ -36,7 +36,7 @@ fn exec_cli(cli: Cli) -> eyre::Result<()> {
     match cli.command {
         Commands::Dump => dump::main(),
         Commands::List => list::main(),
-        Commands::Apply => unsupported_cmd()
+        Commands::Apply { .. } => unsupported_cmd()
     }
 }
 
