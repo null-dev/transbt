@@ -39,8 +39,8 @@ pub struct BLEDeviceCreds {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LongTermKey {
     pub key: Vec<u8>,
-    pub enc_size: u16,
-    pub ediv: u64,
+    pub enc_size: u32,
+    pub ediv: u32,
     pub rand: u64
 }
 

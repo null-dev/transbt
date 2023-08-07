@@ -11,3 +11,12 @@ pub(crate) fn format_mac(bytes: &[u8]) -> String {
 
     result.join(":")
 }
+
+/// Take a single item from a `Vec`, discarding the rest of the elements
+pub(crate) fn vec_take<T>(mut vec: Vec<T>, index: usize) -> Option<T> {
+    if index < vec.len() {
+        Some(vec.swap_remove(index))
+    } else {
+        None
+    }
+}

@@ -3,7 +3,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use eyre::{bail, Context, eyre};
 use ini::{Ini, Properties};
-use crate::cmd::DUMP_FILE;
+use crate::dump::DUMP_FILE;
 use crate::model::{Adapter, BLEDeviceCreds, BytesAsMACWrapper, DataDump, Device, DeviceCreds, LongTermKey, RegularDeviceCreds};
 use crate::util::read_mac;
 
@@ -135,13 +135,13 @@ fn dump_ltk(section: &Properties) -> eyre::Result<LongTermKey> {
     let Some(enc_size_str) = section.get("EncSize") else {
         bail!("device is missing 'EncSize' in LTK section");
     };
-    let enc_size: u16 = enc_size_str.parse()
+    let enc_size: u32 = enc_size_str.parse()
         .context("'EncSize' is not an integer")?;
 
     let Some(ediv_str) = section.get("EDiv") else {
         bail!("device is missing 'EDiv' in LTK section");
     };
-    let ediv: u64 = ediv_str.parse()
+    let ediv: u32 = ediv_str.parse()
         .context("'EDiv' is not an integer")?;
 
     let Some(rand_str) = section.get("Rand") else {

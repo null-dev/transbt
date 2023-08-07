@@ -1,15 +1,9 @@
-use std::fs::OpenOptions;
-use crate::cmd::DUMP_FILE;
-use crate::model::DataDump;
+use crate::dump::{read_dump};
 use crate::util::format_mac;
 
 pub(super) fn main() -> eyre::Result<()> {
-    println!("Reading data dump from '{DUMP_FILE}'...\n");
-    let file = OpenOptions::new()
-        .read(true)
-        .open(DUMP_FILE)?;
+    let data = read_dump()?;
 
-    let data: DataDump = serde_json::from_reader(file)?;
     println!("ADAPTERS:");
 
     for (adapter_hex, adapter) in data.adapters {
